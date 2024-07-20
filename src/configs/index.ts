@@ -3,6 +3,7 @@ import "dotenv/config";
 
 /// Application envs
 export const PORT = process.env.PORT ?? 3000;
+export const APP_COOKIE_NAME = "TODO_APP";
 export const JWT_AUTHENTICATION_SECRET = process.env.JWT_AUTHENTICATION_SECRET;
 
 /// PATHS
