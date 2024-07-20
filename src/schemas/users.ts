@@ -1,26 +1,24 @@
 /** @notice library imports */
-import { sql } from "drizzle-orm";
 import {
   text,
-  integer,
-  sqliteTable,
+  pgTable,
   uniqueIndex,
-} from "drizzle-orm/sqlite-core";
+  serial,
+  timestamp,
+} from "drizzle-orm/pg-core";
 
 /// Users table
-export const users = sqliteTable(
+export const users = pgTable(
   "users",
   {
-    id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
+    id: serial("id").primaryKey(),
     name: text("name").notNull(),
     password: text("password").notNull(),
     email: text("email").notNull().unique(),
-    createdAt: text("created_at")
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at")
       .notNull()
-      .default(sql`CURRENT_TIMESTAMP`),
-    updatedAt: text("updated_at")
-      .notNull()
-      .$onUpdate(() => sql`CURRENT_TIMESTAMP`),
+      .$onUpdate(() => new Date()),
   },
 
   (table) => {
