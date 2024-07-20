@@ -12,7 +12,7 @@ This project is a simple yet powerful ToDo application built with **Drizzle ORM*
 ## Tech Stack
 
 - **Backend**: Node.js, Express, Typescript
-- **Database**: SQLite (via Drizzle ORM)
+- **Database**: Postgres (via Drizzle ORM)
 - **Authentication**: JWT (JSON Web Tokens)
 
 ## Contribution
